@@ -22,3 +22,8 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Python
+venv311/
+__pycache__/
+*.py[cod]
