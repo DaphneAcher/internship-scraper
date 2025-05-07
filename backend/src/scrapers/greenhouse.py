@@ -1,12 +1,42 @@
 #Fetch jobs from Greenhouse-hosted job boards using their public JSON feed.
 
 import requests
+import json
 
-def greenhouse_scraper(company, filters=None):
+def greenhouse_scraper(company,filters=None):
     url = f"https://boards-api.greenhouse.io/v1/boards/{company}/jobs"
     response = requests.get(url)
 
-    print("Status Code:", response.status_code)
-    print(response.text[:1000])
+    if response.status_code != 200:
+        print(f"Sorry! {company} not found!")
+        return
 
-greenhouse_scraper("okta")
+    data = response.json()
+
+    if "jobs" not in data:
+        print(f"No jobs found at {company}")
+        return
+    
+    for job in data["jobs"]:
+        location_match = True
+        if "location" in filters:
+            location_match = filters["location"].lower() in job["location"]["name"].lower()
+
+
+        keyword_match = True
+        if "keyword" in filters:
+            keyword_match = filters["keyword"].lower() in job["title"].lower()
+
+            
+        if location_match and keyword_match:
+            print(job["title"], "-", job["location"]["name"])
+
+    
+    
+
+
+
+
+
+    
+greenhouse_scraper("apple", filters={"location": "new york","keyword": "software engineer"})
