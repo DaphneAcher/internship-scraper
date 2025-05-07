@@ -4,6 +4,9 @@ import requests
 import json
 
 def greenhouse_scraper(company,filters=None):
+    if filters is None:
+        filters = {}
+
     url = f"https://boards-api.greenhouse.io/v1/boards/{company}/jobs"
     response = requests.get(url)
 
@@ -33,10 +36,4 @@ def greenhouse_scraper(company,filters=None):
 
     
     
-
-
-
-
-
-    
-greenhouse_scraper("apple", filters={"location": "new york","keyword": "software engineer"})
+greenhouse_scraper("google", filters={"location": "new york","keyword": "intern"})
