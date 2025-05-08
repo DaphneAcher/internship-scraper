@@ -58,15 +58,21 @@ def greenhouse_scraper(company,filters=None):
 
         if keyword_match and location_match:    
              print(f"{company} | {classify.upper()} | {job['title']} - {job['location']['name']}")
+             job_details_url = f"https://boards-api.greenhouse.io/v1/boards/{company}/jobs/{job['id']}"
+             job_details = requests.get(job_details_url).json()
+             description = job_details.get("description", "[No description provided]")
+             print("DESCRIPTION:\n", description)
+             print("LINK:", job.get("absolute_url", "[No link found]"))
+             print("-" * 80)
 
 
     
 # greenhouse_scraper("spacex", filters={"keywords": ["intern","engineering"]})    
 # greenhouse_scraper("robinhood", filters={"keywords": ["intern"]})
 greenhouse_scraper("notion", filters={"location":"New York", "keywords": ["market"]})
-# greenhouse_scraper("stripe", filters={"keywords": ["intern"]})
-# greenhouse_scraper("airbnb", filters={"keywords": ["intern"]})
-# greenhouse_scraper("asana", filters={"keywords": ["intern"]})
+greenhouse_scraper("stripe", filters={"keywords": ["engineer"]})
+greenhouse_scraper("airbnb", filters=None)
+greenhouse_scraper("asana", filters=None)
 # greenhouse_scraper("cloverhealth", filters={"keywords": ["intern"]})
 # greenhouse_scraper("databricks", filters={"keywords": ["intern"]})
 
