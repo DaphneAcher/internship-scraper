@@ -50,13 +50,13 @@ def greenhouse_scraper(company,filters=None):
             print(company, job["title"], "-", job["location"]["name"])
 
     
-greenhouse_scraper("spacex", filters={"keywords": ["intern","engineering"]})    
-greenhouse_scraper("robinhood", filters={"keywords": ["intern"]})
-greenhouse_scraper("notion", filters={"keywords": ["intern"]})
-greenhouse_scraper("stripe", filters={"keywords": ["intern"]})
-greenhouse_scraper("airbnb", filters={"keywords": ["intern"]})
-greenhouse_scraper("asana", filters={"keywords": ["intern"]})
-greenhouse_scraper("cloverhealth", filters={"keywords": ["intern"]})
-greenhouse_scraper("databricks", filters={"keywords": ["intern"]})
+# greenhouse_scraper("spacex", filters={"keywords": ["intern","engineering"]})    
+# greenhouse_scraper("robinhood", filters={"keywords": ["intern"]})
+greenhouse_scraper("notion", filters={"location":"New York", "keywords": ["intern"]})
+# greenhouse_scraper("stripe", filters={"keywords": ["intern"]})
+# greenhouse_scraper("airbnb", filters={"keywords": ["intern"]})
+# greenhouse_scraper("asana", filters={"keywords": ["intern"]})
+# greenhouse_scraper("cloverhealth", filters={"keywords": ["intern"]})
+# greenhouse_scraper("databricks", filters={"keywords": ["intern"]})
 
  
