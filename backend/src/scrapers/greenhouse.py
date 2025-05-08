@@ -1,5 +1,3 @@
-#Fetch jobs from Greenhouse-hosted job boards using their public JSON feed.
-
 import requests
 import json
 
@@ -32,8 +30,16 @@ def greenhouse_scraper(company,filters=None):
 
             
         if location_match and keyword_match:
+            print({company})
             print(job["title"], "-", job["location"]["name"])
 
     
     
-greenhouse_scraper("google", filters={"location": "new york","keyword": "intern"})
+greenhouse_scraper("spacex", filters={"location":"United States","keyword": "intern"})
+greenhouse_scraper("robinhood", filters={"location":"United States","keyword": "intern"})
+greenhouse_scraper("notion", filters={"location":"United States","keyword": "intern"})
+greenhouse_scraper("stripe", filters={"location":"United States","keyword": "intern"})
+greenhouse_scraper("airbnb", filters={"location":"United States","keyword": "intern"})
+greenhouse_scraper("asana", filters={"location":"United States","keyword": "intern"})
+greenhouse_scraper("cloverhealth", filters={"location":"United States","keyword": "intern"})
+greenhouse_scraper("databricks", filters={"location":"United States", "keyword": "intern"})
